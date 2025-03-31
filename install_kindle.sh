@@ -2,6 +2,13 @@
 
 set -e  # Exit on error
 
+# Check if running on a Kindle
+if ! { [ -f "/etc/prettyversion.txt" ] || [ -d "/mnt/us" ] || pgrep "lipc-daemon" >/dev/null; }; then
+    echo "Error: This script must run on a Kindle device." >&2
+    exit 1
+fi
+
+# Variables
 REPO_URL="https://github.com/justrals/KindleFetch/archive/refs/heads/main.zip"
 ZIP_FILE="repo.zip"
 EXTRACTED_DIR="KindleFetch-main"
@@ -9,7 +16,16 @@ INSTALL_DIR="/mnt/us/extensions/kindlefetch"
 CONFIG_FILE="$INSTALL_DIR/bin/kindlefetch_config"
 TEMP_CONFIG="/tmp/kindlefetch_config_backup"
 
-# Backup existing config if it exists
+# User Confirmation
+echo "KindleFetch will be installed to: $INSTALL_DIR"
+echo "This will overwrite any existing installation."
+read -p "Continue installation? [y/N] " confirm
+if [ "$confirm" != "y" ] && [ "$confirm" != "Y" ]; then
+    echo "Installation aborted by user."
+    exit 1
+fi
+
+# Backup existing config
 if [ -f "$CONFIG_FILE" ]; then
     echo "Backing up existing config..."
     cp "$CONFIG_FILE" "$TEMP_CONFIG"
@@ -17,43 +33,38 @@ fi
 
 # Download repository
 echo "Downloading KindleFetch..."
-if curl -L -o "$ZIP_FILE" "$REPO_URL"; then
-    echo "Download complete."
-else
+if ! curl -L -o "$ZIP_FILE" "$REPO_URL"; then
     echo "Error: Failed to download repository." >&2
     exit 1
 fi
+echo "Download complete."
 
 # Extract files
 echo "Extracting files..."
-if unzip "$ZIP_FILE"; then
-    echo "Extraction complete."
-    rm "$ZIP_FILE"
-else
+if ! unzip "$ZIP_FILE"; then
     echo "Error: Failed to extract files." >&2
     exit 1
 fi
+echo "Extraction complete."
+rm "$ZIP_FILE"
 
-# Navigate to extracted directory
+# Install
 cd "$EXTRACTED_DIR" || {
     echo "Error: Failed to enter extracted directory." >&2
     exit 1
 }
 
-# Remove old installation if it exists
 echo "Removing old installation..."
 rm -rf "$INSTALL_DIR"
 
-# Move new installation
 echo "Installing KindleFetch..."
-if mv kindlefetch /mnt/us/extensions/; then
-    echo "Installation successful."
-else
+if ! mv kindlefetch /mnt/us/extensions/; then
     echo "Error: Failed to install KindleFetch." >&2
     exit 1
 fi
+echo "Installation successful."
 
-# Restore config if it was backed up
+# Restore config
 if [ -f "$TEMP_CONFIG" ]; then
     echo "Restoring configuration..."
     mv "$TEMP_CONFIG" "$CONFIG_FILE"
@@ -64,4 +75,4 @@ echo "Cleaning up..."
 cd ..
 rm -rf "$EXTRACTED_DIR"
 
-echo "Installation completed successfully."
+echo "KindleFetch installation completed successfully."
