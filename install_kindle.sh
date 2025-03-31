@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -e  # Exit on error
+set -e
 
 # Check if running on a Kindle
 if ! { [ -f "/etc/prettyversion.txt" ] || [ -d "/mnt/us" ] || pgrep "lipc-daemon" >/dev/null; }; then
@@ -15,15 +15,6 @@ EXTRACTED_DIR="KindleFetch-main"
 INSTALL_DIR="/mnt/us/extensions/kindlefetch"
 CONFIG_FILE="$INSTALL_DIR/bin/kindlefetch_config"
 TEMP_CONFIG="/tmp/kindlefetch_config_backup"
-
-# User Confirmation
-echo "KindleFetch will be installed to: $INSTALL_DIR"
-echo "This will overwrite any existing installation."
-read -p "Continue installation? [y/N] " confirm
-if [ "$confirm" != "y" ] && [ "$confirm" != "Y" ]; then
-    echo "Installation aborted by user."
-    exit 1
-fi
 
 # Backup existing config
 if [ -f "$CONFIG_FILE" ]; then
