@@ -19,51 +19,37 @@ TEMP_CONFIG="/tmp/kindlefetch_config_backup"
 # Backup existing config
 if [ -f "$CONFIG_FILE" ]; then
     echo "Backing up existing config..."
-    cp "$CONFIG_FILE" "$TEMP_CONFIG"
+    cp -f "$CONFIG_FILE" "$TEMP_CONFIG"
 fi
 
 # Download repository
 echo "Downloading KindleFetch..."
-if ! curl -L -o "$ZIP_FILE" "$REPO_URL"; then
-    echo "Error: Failed to download repository." >&2
-    exit 1
-fi
+curl -L -o "$ZIP_FILE" "$REPO_URL"
 echo "Download complete."
 
 # Extract files
 echo "Extracting files..."
-if ! unzip "$ZIP_FILE"; then
-    echo "Error: Failed to extract files." >&2
-    exit 1
-fi
+unzip -o "$ZIP_FILE"
 echo "Extraction complete."
-rm "$ZIP_FILE"
+rm -f "$ZIP_FILE"
 
-# Install
-cd "$EXTRACTED_DIR" || {
-    echo "Error: Failed to enter extracted directory." >&2
-    exit 1
-}
-
+# Remove old installation
 echo "Removing old installation..."
 rm -rf "$INSTALL_DIR"
 
+# Install
 echo "Installing KindleFetch..."
-if ! mv kindlefetch /mnt/us/extensions/; then
-    echo "Error: Failed to install KindleFetch." >&2
-    exit 1
-fi
+mv -f "$EXTRACTED_DIR/kindlefetch" "$INSTALL_DIR"
 echo "Installation successful."
 
 # Restore config
 if [ -f "$TEMP_CONFIG" ]; then
     echo "Restoring configuration..."
-    mv "$TEMP_CONFIG" "$CONFIG_FILE"
+    mv -f "$TEMP_CONFIG" "$CONFIG_FILE"
 fi
 
 # Cleanup
 echo "Cleaning up..."
-cd ..
 rm -rf "$EXTRACTED_DIR"
 
 echo "KindleFetch installation completed successfully."
