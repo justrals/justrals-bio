@@ -11,7 +11,7 @@ fi
 # Variables
 REPO_URL="https://github.com/justrals/KindleFetch/archive/refs/heads/dev.zip"
 ZIP_FILE="repo.zip"
-EXTRACTED_DIR="KindleFetch-main"
+EXTRACTED_DIR="KindleFetch-dev"
 INSTALL_DIR="/mnt/us/extensions/kindlefetch"
 CONFIG_FILE="$INSTALL_DIR/bin/kindlefetch_config"
 TEMP_CONFIG="/tmp/kindlefetch_config_backup"
