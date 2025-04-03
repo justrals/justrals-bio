@@ -8,6 +8,7 @@ const linksButton = document.getElementById('');
 const projectsButton = document.getElementById('');
 
 document.addEventListener('DOMContentLoaded', function() {
+    loadProjects();
     if (currentPage === 'main') {
         main.style.display = 'block';
         links.style.display = 'none';
@@ -36,7 +37,6 @@ function changePage(page) {
         projects.style.display = 'block';
         links.style.display = 'none';
         main.style.display = 'none';
-        loadProjects();
     }
 }
 
