@@ -12,7 +12,6 @@ main {
 
 .fs, body, main, html {
   width: 100%;
-  height: 100%;
   margin: 0;
 } 
 
@@ -81,7 +80,6 @@ main {
 .card p {
   text-decoration: none;
   color: white;
-  font-size: 20px;
 }
 
 .page-title {
@@ -199,9 +197,7 @@ a {
 .card-info {
   display: flex;
   flex-direction: column;
-  max-height: 100px;
   gap: 5px;
-  
 }
 
 .card-info p {
@@ -214,4 +210,93 @@ a {
 
 .project-title {
   font-weight: 700;
+  font-size: 20px;
 }
+
+.repo-meta-img {
+  height: 14px;
+}
+
+.repo-meta {
+  display: flex;
+  gap: 5px;
+}
+
+.repo-meta-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.5px;
+}
+
+.repo-meta-text {
+  font-size: 14px !important;
+}
+
+.project-card {
+  outline-style: solid;
+  outline-width: 3px;
+  outline-color: #4d4d4d;
+  border-radius: 15px;
+  padding: 20px;
+  transition: 0.5s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0 30px 0;
+}
+
+.project-card:hover {
+  transform: scale(1.01);
+  outline-color: #ffffff;
+}
+
+.project-card p {
+  text-decoration: none;
+  color: white;
+}
+
+.project-link {
+  font-size: 15px;
+  width: fit-content;
+  
+}
+
+.project-links-wrapper {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.project-link-wrapper {
+  display: flex;
+  border-radius: 10px;
+  padding: 5px 10px;
+  align-items: center;
+  gap: 5px;
+}
+
+@media only screen and (max-width:900px) {
+  .main-content {
+      margin: 50px 50px 50px 50px;
+  }
+}
+@media only screen and (max-width:500px) {
+  .center {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+  }
+  .card-image {
+      width: 100%;
+      height: 70px;
+  }
+  .card-info {
+      display: flex;
+      justify-content: flex-start !important;
+      width: 100%;
+  }
+}
+.fs, body, main, html {
+  height: auto;
+} 

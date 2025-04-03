@@ -1,5 +1,5 @@
 .gr-black {
-    background-image: -webkit-linear-gradient(92deg, #0f0f0f, #292929);
+    background-image: -webkit-linear-gradient(92deg, #141414, #272727);
 }
 
 .gr-orange {
@@ -19,7 +19,7 @@
 }
 
 .gr-purple {
-    background-image: -webkit-linear-gradient(92deg, #ef9423, #74cbe8);
+    background-image: -webkit-linear-gradient(92deg, #88195a, #bc227c);
 }
 
 .gr-red {
@@ -31,13 +31,21 @@
 }
 
 .gr-css {
-    background-image: -webkit-linear-gradient(92deg, #016cb6, #28a3d8);
+    background-image: -webkit-linear-gradient(92deg, #663399, #8643c9);
 }
 
 .gr-html {
     background-image: -webkit-linear-gradient(92deg, #de4b24, #ec6329);
 }
 
-.gr-js {
-    background-image: -webkit-linear-gradient(92deg, #dba301, #fbb927);
+.gr-javascript {
+    background-image: -webkit-linear-gradient(92deg, #b6a736, #f1e05a);
+}
+
+.gr-shell {
+    background-image: -webkit-linear-gradient(92deg, #6eb541, #89e051);
+}
+
+.gr-python {
+    background-image: -webkit-linear-gradient(92deg, #3572a5, #4290cf);
 }

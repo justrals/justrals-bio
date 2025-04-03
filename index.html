@@ -22,32 +22,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/gradients.css" rel="stylesheet">
-    <style>
-        @media only screen and (max-width:900px) {
-            .main-content {
-                margin: 50px 50px 50px 50px;
-            }
-        }
-        @media only screen and (max-width:500px) {
-            .center {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-            }
-            .card-image {
-                width: 100%;
-                height: 70px;
-            }
-            .card-info {
-                display: flex;
-                justify-content: flex-start !important;
-                width: 100%;
-            }
-        }
-        .fs, body, main, html {
-            height: auto;
-        } 
-    </style>
 </head>
 <noscript>
   <style type="text/css">
@@ -99,7 +73,8 @@
                         <a onclick="changePage('main')" class="previous-page-button">Go Back ↩</a>
                     </div>
                 </div>
-                <a href="https://justrals.github.io/fit.ai/"><div class="card center">
+                <div id="projects-container"></div>
+                <!-- <a href="https://justrals.github.io/fit.ai/"><div class="card center">
                     <div class="card-info">
                         <p class="project-title">FIT.AI</p>
                         <p class="project-desc">AI powered website for fitness plan generation. </p>
@@ -110,7 +85,7 @@
                         </div>
                     </div>
                     <img src="img/FIT.AI-logo.svg" class="gr-fitai card-image">
-                </div></a>
+                </div></a> -->
             </div>
         </div>
         <div id="links">
