@@ -3,9 +3,6 @@ let currentPage = 'main';
 const main = document.getElementById('main');
 const links = document.getElementById('links');
 const projects = document.getElementById('projects');
-const mainButton = document.getElementById('');
-const linksButton = document.getElementById('');
-const projectsButton = document.getElementById('');
 
 document.addEventListener('DOMContentLoaded', function() {
     loadProjects();
