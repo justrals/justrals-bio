@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Remount root as read-write FIRST
+echo "[0/4] Remounting root as RW..."
+mount -o remount,rw /
+
 # Backup old BusyBox
 echo "[1/4] Backing up old BusyBox..."
 cp /bin/busybox /bin/busybox.bak
