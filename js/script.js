@@ -45,7 +45,7 @@ function loadProjects() {
             
             projectsContainer.innerHTML = '';
             
-            const originalProjects = data.filter(repo => !repo.fork);
+            const originalProjects = data.filter(repo => !repo.fork).reverse();
             
             originalProjects.forEach(repo => {
                 const projectCard = document.createElement('div');
@@ -78,4 +78,18 @@ function loadProjects() {
             document.getElementById('projects-container').innerHTML = 
                 '<p>Failed to load projects. Please try again later.</p>';
         });
+}
+
+function copyToClipboard(element, text) {
+    navigator.clipboard.writeText(text).then(function() {
+        const iElement = element.querySelector('i');
+        if (iElement) {
+            iElement.textContent = 'Copied!';
+            setTimeout(() => {
+                iElement.textContent = 'Click to copy';
+            }, 2000);
+        }
+    }).catch(function(err) {
+        console.error('Could not copy text: ', err);
+    });
 }

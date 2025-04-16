@@ -6,8 +6,9 @@ html {
 }
 
 main {
+  flex: 1;
+  position: relative;
   z-index: 1;
-  position: absolute;
 }
 
 .fs, body, main, html {
@@ -206,6 +207,7 @@ a {
 
 .project-desc {
   font-size: 15px !important;
+  word-wrap: break-word;
 }
 
 .project-title {
@@ -274,6 +276,14 @@ a {
   padding: 5px 10px;
   align-items: center;
   gap: 5px;
+  transition: outline, 0.2s;
+}
+
+.project-link-wrapper:hover {
+  -webkit-animation: hue 5s infinite linear;
+  outline: 1px solid #ffffff;
+  outline-offset: 3px;
+  transform: scale(0.9);
 }
 
 @media only screen and (max-width:900px) {

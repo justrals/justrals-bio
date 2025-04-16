@@ -4,5 +4,6 @@ Disallow: /private/
 Disallow: /tmp/
 Disallow: /search
 Disallow: /checkout
+Disallow: /donate.html
 
 Sitemap: https://justrals.tech/sitemap.xml
