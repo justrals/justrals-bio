@@ -60,9 +60,10 @@ function loadProjects() {
                             <div class="repo-meta-container"><img src="img/fork.svg" class="repo-meta-img"> <p class="repo-meta-text">${repo.forks_count}</p></div>
                             <div class="repo-meta-container"><img src="img/calendar.svg" class="repo-meta-img"> <p class="repo-meta-text">${new Date(repo.updated_at).toLocaleDateString()}</p></div>
                         </div>
+                        ${repo.language ? `
                         <div class="tags">
                             <p class="tag-badge gr-${repo.language.toLowerCase()}">${repo.language}</p>
-                        </div>
+                        </div>` : ''}
                         <div class="project-links-wrapper">
                             <a href="${repo.html_url}" target="_blank" class="project-link-wrapper gr-black"><img src="img/github-logo.svg" class="repo-meta-img"><p class="project-link">GitHub</p></a>
                             ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="project-link-wrapper gr-purple"><p class="project-link">Webpage</p></a>` : ''}
