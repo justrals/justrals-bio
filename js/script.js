@@ -45,7 +45,7 @@ function loadProjects() {
             
             projectsContainer.innerHTML = '';
             
-            const originalProjects = data.filter(repo => !repo.fork).reverse();
+            const originalProjects = data.items.filter(repo => !repo.fork);
             
             originalProjects.forEach(repo => {
                 const projectCard = document.createElement('div');
