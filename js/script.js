@@ -38,7 +38,7 @@ function changePage(page) {
 }
 
 function loadProjects() {
-    fetch('https://api.github.com/users/justrals/repos')
+    fetch('https://api.github.com/search/repositories?q=user:justrals&sort=stars&order=desc')
         .then(response => response.json())
         .then(data => {
             const projectsContainer = document.getElementById('projects-container');
